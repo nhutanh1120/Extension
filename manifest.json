@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "Luu Moments Extension",
+    "description": "Enable Extensions Customize.",
+    "version": "1.0",
+    "icons": {
+        "16": "images/logo.png",
+        "32": "images/logo.png",
+        "48": "images/logo.png",
+        "128": "images/logo.png"
+    },
+    "action": {
+        "default_title": "Click Me!",
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "images/logo.png",
+            "32": "images/logo.png",
+            "48": "images/logo.png",
+            "128": "images/logo.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*",
+                "file://*/*"
+            ],
+            "css": [
+                "main.css"
+            ]
+        }
+    ],
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+F",
+                "mac": "MacCtrl+Shift+F"
+            },
+            "description": "Opens index.html"
+        }
+    }
+}
