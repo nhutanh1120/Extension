@@ -1,0 +1,16 @@
+html body {
+    color: #fff !important;
+    background-color: #202020 !important;
+}
+
+#rt-section .btn.btn-primary {
+    width: 50px !important;
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    font-size: 14px !important;
+}
+
+.tab_container {
+    color: #202020;
+}

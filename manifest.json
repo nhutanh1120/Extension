@@ -22,11 +22,18 @@
     "content_scripts": [
         {
             "matches": [
-                "*://*/*",
-                "file://*/*"
+                "*://www.vnjpclub.com/*"
             ],
             "css": [
-                "main.css"
+                "./css/main.css"
+            ]
+        },
+        {
+            "matches": [
+               "*://www.youtube.com/*"
+            ],
+            "js": [
+                "./js/youtube.js"
             ]
         }
     ],
