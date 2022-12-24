@@ -1,0 +1,88 @@
+*,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    width: 400px;
+    height: 450px;
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    background-color: rgba(81, 102, 186);
+}
+
+.header .image {
+    width: 30px;
+    height: auto;
+    transform: translateZ(300px);
+}
+
+.header h3 {
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.header h3::first-letter {
+    color: transparent;
+}
+
+.tabs {
+    width: 100%;
+}
+
+.tabs .tab-list {
+    position: relative;
+    display: flex;
+    padding: 0px;
+    background-color: #fff;
+    border-bottom: 1px solid lightgray;
+}
+
+.tabs .tab-list .line {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 3px;
+    background-color: #4608ad;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.tabs .tab-list .tab-item {
+    padding: 5px 20px;
+    width: max-content;
+    text-transform: capitalize;
+    color: #4608ad;
+    cursor: pointer;
+}
+
+.tabs li.active {
+    border-bottom: 2px solid #4608ad;
+    background-color: #4708ad12;
+}
+
+.tabs .tab-content {
+    width: 100%;
+    padding: 20px;
+}
+
+.tabs .tab-content .tab-pane {
+    display: none;
+}
+
+.tabs .tab-pane h4 {
+    text-transform: capitalize;
+}
+
+.tabs .tab-pane.active {
+    display: block;
+}

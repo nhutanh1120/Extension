@@ -15,6 +15,9 @@ var observer = new MutationObserver(function (mutations) {
                     )
                     .remove();
             }
+            if(document.getElementById("confirm-button")) {
+                document.getElementById("confirm-button").click();
+            }
         }
     })
 })
