@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #202020;
+    --primary-background: #e4e9f7;
+}
+
+[data-theme="dark"] {
+    --primary-color: #fff;
+    --primary-background: #202020;
+}
+
 *,
 body {
     margin: 0;
@@ -8,34 +18,40 @@ body {
 .app {
     width: 400px;
     height: 450px;
-    background-color: #fff;
-    overflow-y: scroll;
+    background-color: var(--primary-background);
 }
 
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px 16px;
-    background-color: rgba(81, 102, 186);
+    background-color: #4608ad;
 }
 
-.header .image {
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left .navbar-image {
     width: 30px;
     height: auto;
     transform: translateZ(300px);
 }
 
-.header h3 {
+.header .navbar-left .navbar-header {
     color: #fff;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
-.header h3::first-letter {
-    color: transparent;
+.header .navbar-header::first-letter {
+    font-size: 0;
 }
 
 .tabs {
     width: 100%;
+    background-color: var(--primary-background);
 }
 
 .tabs .tab-list {
@@ -79,10 +95,36 @@ body {
     display: none;
 }
 
-.tabs .tab-pane h4 {
+.tabs .tab-pane .pane-header {
+    margin: 3px 0;
+    color: var(--primary-color);
     text-transform: capitalize;
 }
 
 .tabs .tab-pane.active {
     display: block;
+}
+
+.toggle {
+    position: relative;
+    width: 35px;
+    height: 15px;
+    background-color: #bbb;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.toggle .toggle-item {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: #202020;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.toggle .toggle-item.active {
+    left: 20px !important;
 }
