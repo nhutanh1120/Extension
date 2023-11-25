@@ -19,22 +19,15 @@
             "128": "images/logo.png"
         }
     },
+    "permissions": ["tabs"],
     "content_scripts": [
         {
-            "matches": [
-                "*://*.vnjpclub.com/*"
-            ],
-            "css": [
-                "./css/main.css"
-            ]
+            "matches": ["*://*.vnjpclub.com/*"],
+            "css": ["./css/main.css"]
         },
         {
-            "matches": [
-               "*://*.youtube.com/*"
-            ],
-            "js": [
-                "./js/youtube.js"
-            ]
+            "matches": ["*://*.youtube.com/*"],
+            "js": ["./js/youtube.js"]
         }
     ],
     "commands": {

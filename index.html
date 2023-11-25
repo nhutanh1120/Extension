@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Luu Moments</title>
+        <link rel="stylesheet" href="./css/styles.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luu Moments</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-
-<body>
-    <!-- match  "*://*/*" -->
-    <div class="app">
-        <div class="header">
-            <div class="navbar-left">
-                <img class="navbar-image" src="./images/logo.png" alt="img">
-                <h3 class="navbar-header">luu moments</h3>
-            </div>
-            <div class="navbar-right">
-                <div id="toggle-theme" class="toggle">
-                    <span class="toggle-item"></span>
+    <body>
+        <!-- match  "*://*/*" -->
+        <div class="app">
+            <div class="header">
+                <div class="navbar-left">
+                    <img class="navbar-image" src="./images/logo.png" alt="img" />
+                    <h3 class="navbar-header">luu moments</h3>
+                </div>
+                <div class="navbar-right">
+                    <div id="toggle-theme" class="toggle">
+                        <span class="toggle-item"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tabs">
-            <div class="tab-list">
-                <span class="tab-item active">chi tiết</span>
-                <span class="tab-item">xem thêm</span>
-                <span class="line"></span>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane active">
-                    <div class="list-pane">
-                        <h4 class="pane-header">youtube</h4>
-                        <div class="pane-option">
-                            <div class="toggle">
-                                <span class="toggle-item"></span>
+            <div class="tabs">
+                <div class="tab-list">
+                    <span class="tab-item active">chi tiết</span>
+                    <span class="tab-item">xem thêm</span>
+                    <span class="line"></span>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <div class="list-pane">
+                            <h4 class="pane-header">youtube</h4>
+                            <div class="pane-option">
+                                <div id="toggle-youtube" class="toggle">
+                                    <span class="toggle-item"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane">
+                    <div class="tab-pane"></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="./js/script.js"></script>
-</body>
-
+        <script src="./js/script.js"></script>
+    </body>
 </html>
