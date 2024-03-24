@@ -36,7 +36,7 @@ function handleMutation(mutations) {
     // Duyệt qua mảng selector và xử lý từng phần tử
     selectors.forEach((selector) => {
         const elements = document.querySelectorAll(selector);
-        elements.forEach((element) => {
+        elements?.forEach((element) => {
             handleElementAction(selector, element);
         });
     });
