@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Luu Moments</title>
         <link rel="stylesheet" href="./css/styles.css" />
+        <link rel="stylesheet" href="./css/coin.css" />
     </head>
 
     <body>
@@ -24,12 +25,80 @@
             </div>
             <div class="tabs">
                 <div class="tab-list">
-                    <span class="tab-item active">chi tiết</span>
+                    <span class="tab-item active">coin</span>
+                    <span class="tab-item">chi tiết</span>
                     <span class="tab-item">xem thêm</span>
                     <span class="line"></span>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active">
+                        <div class="list-pane">
+                            <div class="coin-header">
+                                <div class="coin-header-title">Tỉ lệ</div>
+                                <div class="coin-header-description">
+                                    <input
+                                        type="text"
+                                        name="percent"
+                                        id="percent"
+                                        class="input"
+                                    />
+                                    <label for="percent">%</label>
+                                </div>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="form-control">
+                                            <label for="costPrice">USDT</label>
+                                            <input
+                                                type="text"
+                                                name="costPrice"
+                                                id="costPrice"
+                                                class="input"
+                                                placeholder="Giá mua"
+                                            />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-control">
+                                            <label for="sellingPrice">USDT</label>
+                                            <input
+                                                type="text"
+                                                name="sellingPrice"
+                                                class="input"
+                                                id="sellingPrice"
+                                                placeholder="Giá bán"
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="coin-header">
+                                <div class="coin-header-title">USDT - VND</div>
+                                <div class="coin-header-description">
+                                    <input type="text" name="donvi" id="donvi" />
+                                    <label for="donvi">VND</label>
+                                </div>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="form-control">
+                                            <label for="usdt">USDT</label>
+                                            <input type="text" name="usdt" id="usdt" placeholder="Giá" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-control">
+                                            <label for="vnd">VND</label>
+                                            <input type="text" name="vnd" id="vnd" placeholder="Giá" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane">
                         <div class="list-pane">
                             <h4 class="pane-header">youtube</h4>
                             <div class="pane-option">
@@ -45,5 +114,6 @@
         </div>
 
         <script src="./js/script.js"></script>
+        <script src="./js/coin.js"></script>
     </body>
 </html>
