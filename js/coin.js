@@ -1,8 +1,11 @@
-const PERCENT = '10';
-const DONVI = '26000';
+const PERCENT = "10";
+const DONVI = "26000";
 
 const percentElement = document.getElementById("percent");
 const costPriceElement = document.getElementById("costPrice");
+const flagPercentElement = document.getElementById("flagPercent");
+const flag = convertStringtoBool(localStorage.getItem("flagPercent")) ?? true;
+document.getElementById("flagPercent").innerText = flag ? "Tăng" : "Giảm";
 
 const donviElement = document.getElementById("donvi");
 const usdtElement = document.getElementById("usdt");
@@ -11,58 +14,68 @@ percentElement.addEventListener("input", changeValue);
 percentElement.addEventListener("focus", function () {
     clearInput(this);
 });
-percentElement.addEventListener("focusout", function() {
-    handleFocusOut(percentElement, 'percent');
+percentElement.addEventListener("focusout", function () {
+    handleFocusOut(percentElement, "percent");
 });
 costPriceElement.addEventListener("input", changeValue);
-costPriceElement.addEventListener("focusout", function() {
-    handleFocusOut(costPriceElement, 'costPrice');
+costPriceElement.addEventListener("focusout", function () {
+    handleFocusOut(costPriceElement, "costPrice");
+});
+flagPercentElement.addEventListener("click", function () {
+    const costPrice = parseFloat(removeSpaces(document.getElementById("costPrice").value));
+    const percentage = parseFloat(removeSpaces(document.getElementById("percent").value));
+    const flag = !convertStringtoBool(localStorage.getItem("flagPercent")) ?? true;
+    localStorage.setItem("flagPercent", flag);
+    document.getElementById("flagPercent").innerText = flag ? "Tăng" : "Giảm";
+
+    // Set the value of the 'sellingPrice' input field to the calculated price increase
+    document.getElementById("sellingPrice").value = calculatePriceIncrease(costPrice, percentage, flag);
 });
 
 donviElement.addEventListener("blur", formatInputValue);
 donviElement.addEventListener("focus", function () {
     clearInput(this);
 });
-donviElement.addEventListener("focusout", function() {
-    handleFocusOut(donviElement, 'donvi');
+donviElement.addEventListener("focusout", function () {
+    handleFocusOut(donviElement, "donvi");
 });
 donviElement.addEventListener("input", changeUsdtValue);
 usdtElement.addEventListener("input", changeUsdtValue);
 
-percentElement.value = localStorage.getItem('percent') || PERCENT;
-donviElement.value = localStorage.getItem('donvi') || DONVI;
-usdtElement.value = localStorage.getItem('usdt') || 0;
-costPriceElement.value = localStorage.getItem('costPrice') || 0;
+percentElement.value = localStorage.getItem("percent") || PERCENT;
+donviElement.value = localStorage.getItem("donvi") || DONVI;
+usdtElement.value = localStorage.getItem("usdt") || 0;
+costPriceElement.value = localStorage.getItem("costPrice") || 0;
 
 // Initial calculations
 changeUsdtValue();
 changeValue();
 
-function calculatePriceIncrease(initialPrice, percentageIncrease) {
-    return initialPrice + initialPrice * (percentageIncrease / 100);
+function calculatePriceIncrease(initialPrice, percentageIncrease, flag) {
+    const percent = initialPrice * (percentageIncrease / 100);
+    return flag == true ? initialPrice + percent : initialPrice - percent;
 }
 
 function handleFocusOut(inputElement, store) {
-    
     if (inputElement.value === null || inputElement.value === "") {
         inputElement.value = localStorage.getItem(store) || 0;
         localStorage.setItem(store, 0);
     }
     var costPrice = parseFloat(removeSpaces(document.getElementById("costPrice").value));
     var percentage = parseFloat(removeSpaces(document.getElementById("percent").value));
-    localStorage.setItem('percent', percentage);
-    localStorage.setItem('costPrice', costPrice);
-    localStorage.setItem('donvi', document.getElementById("donvi").value);
+    localStorage.setItem("percent", percentage);
+    localStorage.setItem("costPrice", costPrice);
+    localStorage.setItem("donvi", document.getElementById("donvi").value);
 }
-
 
 function changeValue() {
     // Get the value of each input field
-    var costPrice = parseFloat(removeSpaces(document.getElementById("costPrice").value));
-    var percentage = parseFloat(removeSpaces(document.getElementById("percent").value));
+    const costPrice = parseFloat(removeSpaces(document.getElementById("costPrice").value));
+    const percentage = parseFloat(removeSpaces(document.getElementById("percent").value));
+    const flag = convertStringtoBool(localStorage.getItem("flagPercent")) ?? true;
 
     // Set the value of the 'sellingPrice' input field to the calculated price increase
-    document.getElementById("sellingPrice").value = calculatePriceIncrease(costPrice, percentage);
+    document.getElementById("sellingPrice").value = calculatePriceIncrease(costPrice, percentage, flag);
 }
 
 function changeUsdtValue() {
@@ -70,6 +83,7 @@ function changeUsdtValue() {
     document.getElementById("vnd").value = formatCurrency(
         parseFloat(removeSpaces(document.getElementById("usdt").value)) * (removeSpaces(donvi.value) ?? 26000),
     );
+    localStorage.setItem("usdt", document.getElementById("usdt").value);
 }
 
 function formatCurrency(amount, currencyCode = "VND", locale = "vi-VN") {
@@ -87,7 +101,7 @@ function formatInputValue() {
     if (!isNaN(numericValue)) {
         // Hiển thị giá trị định dạng trong ô input
         document.getElementById("donvi").value = insertLeadingZeros(numericValue);
-        localStorage.setItem('donvi', insertLeadingZeros(numericValue));
+        localStorage.setItem("donvi", insertLeadingZeros(numericValue));
     }
     changeUsdtValue();
 }
@@ -138,4 +152,8 @@ function removeSpaces(str) {
 
 function clearInput(input) {
     input.value = "";
+}
+
+function convertStringtoBool(str) {
+    return str === "true";
 }
