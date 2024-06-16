@@ -7,15 +7,15 @@ const selectors = [
     ".ytp-ad-skip-button-modern.ytp-button",
     "#container .ytp-ad-overlay-container.ytp-rounded-overlay-ad",
     ".ytp-autonav-endscreen-button-container .ytp-autonav-endscreen-upnext-cancel-button~.ytp-autonav-endscreen-upnext-play-button",
+    ".ytp-skip-ad .ytp-skip-ad-button",
 ];
 
 // Hàm xử lý hành động cho từng phần tử quảng cáo dựa trên selector
 function handleElementAction(selector, element) {
-    if (selector.includes("ytp-ad-skip-button") || selector.includes("ytp-autonav-endscreen-upnext-play-button")) {
-        element.click();
-    } else if (selector.includes("ytp-ad-overlay-container")) {
+    if (selector.includes("ytp-ad-overlay-container")) {
         element.remove();
     }
+    element.click();
 }
 
 // Hàm xử lý sự kiện mutation, kiểm tra và xử lý các thay đổi trong DOM
